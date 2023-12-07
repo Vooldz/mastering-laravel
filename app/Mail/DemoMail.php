@@ -20,7 +20,7 @@ class DemoMail extends Mailable
      */
     public function __construct(public Test $test)
     {
-        $this->test->content;
+        
     }
 
     /**
@@ -42,7 +42,8 @@ class DemoMail extends Mailable
         return new Content(
             markdown: 'emails.Test',
             with: [
-                'content' => $this->test->content
+                // 'content' => $this->test->content
+                'content' => "helllo"
             ]
         );
     }
@@ -55,9 +56,5 @@ class DemoMail extends Mailable
     public function attachments(): array
     {
         return [];
-    }
-
-    public function he(){
-        
     }
 }

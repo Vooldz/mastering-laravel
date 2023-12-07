@@ -2,6 +2,7 @@
 # Introduction
 
 The body of your message.
+Content: {{ $content }}
 
 <x-mail::button :url="''">
 Button Text

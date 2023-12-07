@@ -9,18 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Test;
 
 class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data = [];
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct(public Test $test)
     {
-        $this->data = $data;
+
     }
 
     /**
@@ -29,7 +29,7 @@ class TestMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Test Mail',
+            subject: $this->test->name,
         );
     }
 
@@ -40,6 +40,9 @@ class TestMail extends Mailable
     {
         return new Content(
             markdown: 'emails.Test',
+            with: [
+                'content' => $this->test->content
+            ]
         );
     }
 

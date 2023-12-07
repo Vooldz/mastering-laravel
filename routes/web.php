@@ -56,7 +56,8 @@ Route::get('send/demo', function (){
         'title' => 'Title From web.php',
         'content' => 'Content From web.php',
     ];
-    Mail::to('test@laravel.com')->send(new DemoMail($data));
+    $test = App\Models\Test::find(14);
+    Mail::to('test@laravel.com')->send(new DemoMail($test));
 
 });
 
@@ -65,7 +66,8 @@ Route::get('send/test', function (){
         'title' => 'Title From web.php',
         'content' => 'Content From web.php',
     ];
-    Mail::to('test@laravel.com')->send(new TestMail($data));
+    $test = App\Models\Test::find(14);
+    Mail::to('test@laravel.com')->send(new TestMail($test));
 });
 
 require __DIR__ . '/auth.php';
