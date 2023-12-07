@@ -42,8 +42,7 @@ class DemoMail extends Mailable
         return new Content(
             markdown: 'emails.Test',
             with: [
-                // 'content' => $this->test->content
-                'content' => "helllo"
+                'content' => $this->test->content
             ]
         );
     }
