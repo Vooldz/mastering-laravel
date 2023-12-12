@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Example;
 use Illuminate\Http\Request;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use App\Http\Requests\ExampleCreateRequest;
+use App\Http\Requests\ExampleUpdateRequest;
 
 class ExampleController extends Controller
 {
     // private $columns = ['name', 'content'];
-
-
     /**
      * Display a listing of the resource.
      */
@@ -37,20 +37,9 @@ class ExampleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ExampleCreateRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'show' => 'required|in:0,1',
-            'status' => 'required|in:enable,disable',
-        ], [], [
-            'title' => 'Title',
-            'content' => 'Content',
-            'show' => 'Show',
-            'status' => 'Status',
-        ]);
-        Example::create($validated);
+        Example::create($request->validated());
         return redirect('example');
     }
 
@@ -75,20 +64,9 @@ class ExampleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ExampleUpdateRequest $request, string $id)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'show' => 'required|in:0,1',
-            'status' => 'required|in:enable,disable',
-        ], [], [
-            'title' => 'Title',
-            'content' => 'Content',
-            'show' => 'Show',
-            'status' => 'Status',
-        ]);
-        Example::where('id', $id)->update($validated);
+        Example::where('id', $id)->update($request->validated());
         return redirect('example');
     }
 

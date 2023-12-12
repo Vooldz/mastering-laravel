@@ -24,14 +24,14 @@
                     <x-text-input type="text" class="block mt-1 w-full p-2 border border-gray-300" name="title"
                         placeholder="Title" value="{{ $test->title }}" />
                     <!-- Title Error Message -->
-                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('title')" class="my-2" />
                     <hr>
 
                     <!-- Content Field -->
                     <textarea name="content" class="block w-full p-2 border rounded border-gray-300 mt-4" placeholder="Content">{{ $test->content }}</textarea>
                     <!-- Content Error Message -->
-                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                    <hr class="mt-5">
+                    <x-input-error :messages="$errors->get('content')" class="my-2" />
+                    <hr>
 
                     <!-- Show Field -->
                     <div class="inline-flex mt-2 mb-2">
@@ -45,10 +45,10 @@
                         <x-input-label for="hide" class="mr-6" :value="__('Hide Data')" />
                         <input type="radio" name="show" id="hide" value="0" @checked($test->show == 0)>
                     </div>
-                    <hr>
+
 
                     <!-- Show Or Hide Error -->
-                    <x-input-error :messages="$errors->get('show')" class="mb-2" />
+                    <x-input-error :messages="$errors->get('show')" class="my-2" />
                     <hr>
 
                     <!-- Status Field -->

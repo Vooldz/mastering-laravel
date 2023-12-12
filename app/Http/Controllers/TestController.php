@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Test;
 use App\Models\Post;
+use App\Models\Test;
+use Illuminate\Http\Request;
+use App\Http\Requests\TestCreateRequest;
+use App\Http\Requests\TestUpdateRequest;
 
 class TestController extends Controller
 {
@@ -36,21 +38,23 @@ class TestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TestCreateRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'show' => 'required|in:1,0',
-            'status' => 'required|in:enable,disable',
+        // $validated = $request->validate([
+        //     'title' => 'required|string',
+        //     'content' => 'required|string',
+        //     'show' => 'required|in:1,0',
+        //     'status' => 'required|in:enable,disable',
 
-        ], [], [
-            'title' => 'The title',
-            'content' => 'Content',
-            'show' => 'show or hide',
+        // ], [], [
+        //     'title' => 'The title',
+        //     'content' => 'Content',
+        //     'show' => 'show or hide',
 
-        ]);
-        Test::create($validated);
+        // ]);
+        // Test::create($validated);
+
+        Test::create($request->validated());
         return redirect('test');
     }
 
@@ -75,20 +79,9 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TestUpdateRequest $request, string $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'show' => 'required|in:1,0',
-            'status' => 'required|in:enable,disable',
-        ], [], [
-            'title' => 'The Title',
-            'content' => 'Content',
-            'show' => 'show or hide',
-            'status' => 'Status',
-        ]);
-        Test::where('id', $id)->update($validated);
+        Test::where('id', $id)->update($request->validated());
         return redirect('test');
     }
 

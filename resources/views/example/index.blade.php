@@ -12,7 +12,7 @@
                         <!-- Create -->
                         <h3
                             class="px-4 py-2 bg-gray-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 transition">
-                            <a href="test/create">
+                            <a href="example/create">
                                 Create
                             </a>
                         </h3>
@@ -43,16 +43,16 @@
                     <table class=" table-auto w-full mt-6 divide-y divide-gray-500">
                         <thead class="bg-gray-400">
                             <tr>
-                                <th class="px-4 py-2">Title</th>
-                                <th class="px-4 py-2">Content</th>
-                                <th class="px-4 py-2">Status</th>
-                                <th class="px-4 py-2">Show</th>
-                                <th class="px-4 py-2">Created</th>
-                                <th class="px-4 py-2">Updated</th>
+                                <th class="px-4 py-2 border border-gray-500">Title</th>
+                                <th class="px-4 py-2 border border-gray-500">Content</th>
+                                <th class="px-4 py-2 border border-gray-500">Status</th>
+                                <th class="px-4 py-2 border border-gray-500">Show</th>
+                                <th class="px-4 py-2 border border-gray-500">Created</th>
+                                <th class="px-4 py-2 border border-gray-500">Updated</th>
                                 @if (request('trashed') == 'onlyTrashed' || request('trashed') == 'withTrashed')
-                                    <th class="px-4 py-2">Deleted</th>
+                                    <th class="px-4 py-2 border border-gray-500">Deleted</th>
                                 @endif
-                                <th class="px-4 py-2">Action</th>
+                                <th class="px-4 py-2 border border-gray-500">Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-500">

@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Cache;
-use App\Mail\DemoMail;
-use App\Mail\TestMail;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +16,7 @@ use App\Http\Controllers\ProfileController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
+ */
 
 // Public Routes
 
@@ -27,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cash', [CacheController::class,'index']);
+Route::get('cash', [CacheController::class, 'index']);
 
 // Protected Routes
 Route::middleware('auth')->group(function () {
@@ -51,23 +48,33 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Send a Demo mail
-Route::get('send/demo', function (){
-    $data = [
-        'title' => 'Title From web.php',
-        'content' => 'Content From web.php',
-    ];
-    $test = App\Models\Test::find(14);
-    Mail::to('test@laravel.com')->send(new DemoMail($test));
+// Route::get('send/demo', function (){
+//     $data = [
+//         'title' => 'Title From web.php',
+//         'content' => 'Content From web.php',
+//     ];
+//     $test = App\Models\Test::find(14);
+//     Mail::to('test@laravel.com')->send(new DemoMail($test));
 
-});
+// });
 
-Route::get('send/test', function (){
-    $data = [
-        'title' => 'Title From web.php',
-        'content' => 'Content From web.php',
-    ];
-    $test = App\Models\Test::find(14);
-    Mail::to('test@laravel.com')->send(new TestMail($test));
+// Send a test mail
+Route::get('send/test', function () {
+    // Use the queue directly from here
+    // $test = \App\Models\Test::find(14);
+    // Mail::to('test@example.com')->queue(new TestMail($test));
+
+    // Use the queue from (App\Jobs)
+    // dispatch(new \App\Jobs\JobDemo);
+    // dispatch(new \App\Jobs\JobDemo2);
+
+    // Use the queue and batchable
+    Bus::batch([
+        new \App\Jobs\JobDemo,
+        new \App\Jobs\JobDemo2,
+    ])->dispatch();
 });
+Route::get('create', fn() => view('creating'))->name('user');
 
 require __DIR__ . '/auth.php';
+

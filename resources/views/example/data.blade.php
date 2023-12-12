@@ -1,18 +1,18 @@
 
 <?php $deleted = $data->deleted_at > 1971 ? 'deleted' : 'not deleted'; ?>
 <tr class="text-black">
-    <td class="px-4 py-2">{{ $data->title }}</td>
-    <td class="px-4 py-2">{{ $data->content }}</td>
-    <td class="px-4 py-2">{{ $data->status }}</td>
-    <td class="px-4 py-2">{{ $data->show == 1 ? 'Show' : 'Hide' }}</td>
-    <td class="px-4 py-2">{{ $data->created_at }}</td>
-    <td class="px-4 py-2">{{ $data->updated_at }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->title }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->content }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->status }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->show == 1 ? 'Show' : 'Hide' }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->created_at }}</td>
+    <td class="px-4 py-2 border border-gray-400">{{ $data->updated_at }}</td>
     @if (request('trashed') == 'onlyTrashed' || request('trashed') == 'withTrashed')
-        <td class="px-4 py-2">{{ $data->deleted_at > 1971 ? $data->deleted_at : 'Not Deleted' }}</td>
+        <td class="px-4 py-2 border border-gray-400">{{ $data->deleted_at > 1971 ? $data->deleted_at : 'Not Deleted' }}</td>
     @endif
 
 
-    <td class="px-4 py-2 space-x-2">
+    <td class="px-4 py-2 border border-gray-400 space-x-2">
         <!-- If Not Deleted Show The Delete, Edit And Show Button -->
 
         @if ($deleted == 'not deleted')

@@ -20,17 +20,17 @@
                         placeholder="title" value="{{ old('title') }}"/>
 
                     <!-- Title Error Message -->
-                    <x-input-error :messages="$errors->get('Title')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('title')" class="my-2" />
                     <hr>
 
                     <!-- Content Field -->
                     <textarea name="content" placeholder="Content" class="block w-full p-2 border rounded border-gray-300 mt-4">{{ old('content') }}</textarea>
                     <!-- Content Error Message -->
-                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('content')" class="my-2" />
 
 
                     <!-- Show Field -->
-                    <hr class="mt-5">
+                    <hr>
                     <div class="inline-flex mt-2 mb-2">
                         <x-input-label for="show" :value="__('Show Data')" class="mr-5" />
                         <x-text-input type="radio" name="show" id="show" value="1" />
@@ -44,7 +44,7 @@
                     </div>
 
                     <!-- Show Or Hide Error -->
-                    <x-input-error :messages="$errors->get('show')" class="mb-2" />
+                    <x-input-error :messages="$errors->get('show')" class="my-2" />
                     <hr>
 
                     <!-- Status Field -->

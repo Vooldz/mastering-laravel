@@ -24,15 +24,15 @@
                     <x-text-input type="text" class="block mt-1 w-full p-2 border border-gray-300" name="title"
                         placeholder="Title" value="{{ $example->title }}" />
                     <!-- Title Error Message -->
-                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('title')" class="my-2" />
                     <hr>
 
                     <!-- Content Field -->
                     <textarea name="content" class="block w-full p-2 border rounded border-gray-300 mt-4" placeholder="Content">{{ $example->content }}</textarea>
                     <!-- Content Error Message -->
-                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                    <hr class="mt-5">
-
+                    <x-input-error :messages="$errors->get('content')" class="my-2" />
+                    <hr>
+                    
                     <!-- Show Field -->
                     <div class="inline-flex mt-2 mb-2">
                         <x-input-label for="show" :value="__('Show Data')" class="mr-5" />
