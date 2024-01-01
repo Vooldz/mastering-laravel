@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
+use App\Models\Test;
+use App\Observers\TestObserve;
 use Illuminate\View\View as MyView;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Test::observe(new TestObserve);
         Blade::directive('convUnix', function ($unix) {
             return "<?php echo date('m/d/Y H:i',$unix); ?>";
         });

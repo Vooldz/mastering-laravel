@@ -81,7 +81,8 @@ class TestController extends Controller
      */
     public function update(TestUpdateRequest $request, string $id)
     {
-        Test::where('id', $id)->update($request->validated());
+        $test = Test::find($id);
+        $test->update($request->validated());
         return redirect('test');
     }
 

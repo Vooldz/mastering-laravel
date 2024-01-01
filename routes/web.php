@@ -47,6 +47,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/chat', function () {
+    return view('chat');
+});
+
 // Send a Demo mail
 // Route::get('send/demo', function (){
 //     $data = [

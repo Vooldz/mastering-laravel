@@ -6,6 +6,7 @@
     <td class="px-4 py-2 border border-gray-400">{{ $data->show == 1 ? 'Show' : 'Hide' }}</td>
     <td class="px-4 py-2 border border-gray-400">{{ $data->created_at }}</td>
     <td class="px-4 py-2 border border-gray-400">{{ $data->updated_at }}</td>
+    
     @if (request('trashed') == 'onlyTrashed' || request('trashed') == 'withTrashed')
         <td class="px-4 py-2 border border-gray-400">{{ $data->deleted_at > 1971 ? $data->deleted_at : 'Not Deleted' }}</td>
     @endif

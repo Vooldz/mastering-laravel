@@ -17,6 +17,41 @@ class Test extends Model
         'status',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Create
+        static::created(function ($model) {$model->title = "Ayman";});
+        static::creating(function ($model) {});
+
+        // Update
+        static::updating(function ($model) {});
+        static::updated(function ($model) {});
+
+        // Create & Update
+        static::saving(function ($model) {});
+        static::saved(function ($model) {});
+
+        // Delete
+        static::deleted(function ($model) {});
+        static::deleting(function ($model) {});
+
+        // Restore
+        static::restoring(function ($model) {});
+        static::restored(function ($model) {});
+
+        // ForceDelete
+        static::forceDeleted(function ($model) {});
+        static::forceDeleting(function ($model) {});
+
+        // Retrieved
+        static::retrieved(function ($model) {});
+
+        // Replicating
+        static::replicating(function ($model) {});
+    }
+
     // Create Date Format
     public function getCreatedAtAttribute($date)
     {
